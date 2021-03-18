@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  magma_frontend_dev:
+    container_name: magma_frontend_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "9230:9229"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    restart: unless-stopped
+
+volumes:
+  node_modules:
