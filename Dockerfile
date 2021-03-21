@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD [ "yarn", "start" ]
+CMD  [ -d "node_modules" ] && yarn start

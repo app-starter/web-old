@@ -8,10 +8,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-      - "9230:9229"
+      - "7000:7000"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     restart: unless-stopped
 
 volumes:
