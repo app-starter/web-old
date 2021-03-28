@@ -1,2 +1,3 @@
-export { LoginScreen, RegisterScreen, HomePageScreen } from "./auth";
-export { HomeScreen } from "./home";
+export { LoginScreen, RegisterScreen } from "./auth";
+export { LandingPageScreen, AboutPageScreen } from "./landingpage";
+export { DashboardScreen ,UsersScreen} from "./app";

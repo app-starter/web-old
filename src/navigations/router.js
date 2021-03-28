@@ -1,10 +1,12 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import {
   LoginScreen,
   RegisterScreen,
-  HomeScreen,
-  HomePageScreen,
+  LandingPageScreen,
+  AboutPageScreen,
+  DashboardScreen,
+  UsersScreen,
 } from "../screens";
 import AuthStore from "../stores/AuthStore";
 import { useObserver } from "mobx-react";
@@ -17,7 +19,7 @@ export function BaseRouter() {
         </Route>
       ) : (
         <Route path="/">
-          <AuthRouter />
+          <LandingPageRouter />
         </Route>
       )}
     </Switch>
@@ -25,29 +27,42 @@ export function BaseRouter() {
 }
 function AuthRouter() {
   return (
-    <>
-      <Switch>
-        <Route exact path="/">
-          <HomePageScreen />
-        </Route>
-        <Route exact path="/login">
-          <LoginScreen />
-        </Route>
-        <Route path="/register">
-          <RegisterScreen />
-        </Route>
-      </Switch>
-    </>
+    <Switch>
+      <Route path="/login" >
+        <LoginScreen />
+      </Route>
+      <Route path="/register">
+        <RegisterScreen />
+      </Route>
+    </Switch>
+  );
+}
+function LandingPageRouter() {
+  return (
+    <Switch>
+      <Route exact path="/">
+        <LandingPageScreen />
+      </Route>
+      <Route path="/about">
+        <AboutPageScreen />
+      </Route>
+      <Route>
+        <AuthRouter />
+      </Route>
+    </Switch>
   );
 }
 function HomeRouter() {
   return (
-    <>
-      <Switch>
-        <Route path="/">
-          <HomeScreen />
-        </Route>
-      </Switch>
-    </>
+    <Switch>
+      <Redirect exact from="/login" to="/" />
+      <Redirect exact from="/register" to="/" />
+      <Route exact path="/">
+        <DashboardScreen />
+      </Route>
+      <Route path="/users">
+        <UsersScreen />
+      </Route>
+    </Switch>
   );
 }
