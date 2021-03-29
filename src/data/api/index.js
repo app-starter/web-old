@@ -5,13 +5,16 @@ class Api {
   getBaseUrl() {
     return BASEAPIURL;
   }
+  getToken(){
+   return localStorage.getItem("token");
+  }
 
-  getApi(token) {
+  getApi() {
     const axiosInstance = Axios.create({
       baseURL: BASEAPIURL,
       headers: {
         Accept: "application/json",
-        Authorization: "Bearer " + token,
+        Authorization: this.getToken(),
       },
     });
     axiosInstance.interceptors.response.use(

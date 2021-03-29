@@ -1,11 +1,11 @@
 import { observable, decorate, action } from "mobx";
 import { Login } from "../data";
 class AuthStore {
-  isLogin = false;
+  isLogin;
   token = "";
-  isHaveTokenLogin(){
-    var isHaveToken= localStorage.getItem("token")
-    return isHaveToken==""?false:true;
+  isHaveTokenLogin() {
+    var isHaveToken = localStorage.getItem("token");
+    return isHaveToken == "" ? false : true;
   }
 
   login(loginModel) {
@@ -15,9 +15,8 @@ class AuthStore {
         var res = response.data;
         if (res.success) {
           this.token = res.token;
-          this.isLogin=true;
-          localStorage.setItem("token",res.token)
-         
+          this.isLogin = true;
+          localStorage.setItem("token", res.token);
         } else {
           console.log(response.data.errors);
         }
@@ -31,10 +30,9 @@ class AuthStore {
       });
   }
   logout() {
-    localStorage.setItem("token","")
     this.isLogin = false;
-    this.token="";
-    
+    localStorage.setItem("token", "");
+    this.token = "";
   }
 }
 decorate(AuthStore, {
