@@ -1,5 +1,5 @@
 import { observable, decorate, action } from "mobx";
-import { Login } from "../data";
+import { login } from "../data";
 class AuthStore {
   isLogin;
   token = "";
@@ -8,26 +8,10 @@ class AuthStore {
     return isHaveToken == "" ? false : true;
   }
 
-  login(loginModel) {
-    Login(loginModel)
-      .then((response) => {
-        console.log(response);
-        var res = response.data;
-        if (res.success) {
-          this.token = res.token;
-          this.isLogin = true;
-          localStorage.setItem("token", res.token);
-        } else {
-          console.log(response.data.errors);
-        }
-      })
-      .catch((error) => {
-        if (error.status === 400) {
-          console.log(
-            "Kullanıcı adı veya şifre yanlış.\nLütfen tekrar deneyiniz"
-          );
-        }
-      });
+  setUser(token) {
+    this.token = token;
+    this.isLogin = true;
+    localStorage.setItem("token", token);
   }
   logout() {
     this.isLogin = false;

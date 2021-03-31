@@ -1,2 +1,2 @@
-export { Login, Register, ChangePassword } from "./requests/account-requests";
-export { GetUsers } from "./requests/user-requests";
+export { login, register, changePassword } from "./requests/account-requests";
+export { getUsers } from "./requests/user-requests";
