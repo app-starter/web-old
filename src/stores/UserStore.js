@@ -1,10 +1,10 @@
 import { observable, decorate, action } from "mobx";
-import { GetUsers } from "../data";
+import { getUsers } from "../data";
 class UserStore {
   users = [];
 
   getAllUser() {
-    GetUsers()
+    getUsers()
       .then((response) => {
         console.log(response);
         var res = response.data;

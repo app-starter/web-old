@@ -6,8 +6,8 @@ export const DashboardLayout = (props) => {
     <div>
       <NavbarAdmin />
       <header class="bg-white ">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 class="text-1xl font-bold text-gray-900">{props.title}</h1>
+        <div class="max-w-7xl mx-auto py-4  px-4">
+          <h1 class="text-xl font-medium text-gray-900">{props.title}</h1>
         </div>
       </header>
       <main>
