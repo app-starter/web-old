@@ -60,8 +60,14 @@ function HomeRouter() {
       <Route exact path="/">
         <DashboardScreen />
       </Route>
+
       <Route path="/users">
+        {AuthStore.isHavePermission("Permission_UserRead") ? (
         <UsersScreen />
+        ) : (
+          <div>İzin Yok</div>
+        )}
+      </Route>
       </Route>
     </Switch>
   );

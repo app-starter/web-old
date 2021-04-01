@@ -1,5 +1,19 @@
 import { Link, useHistory } from "react-router-dom";
+import { useObserver } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
+
+const adminRoutesMenu = [
+  {
+    displayName: "Users",
+    path: "/users",
+    isHavePermission: AuthStore.isHavePermission("Permission_UserRead"),
+  },
+  {
+    displayName: "Roles",
+    path: "/roles",
+    isHavePermission: AuthStore.isHavePermission("Permission_RoleRead"),
+  },
+];
 
 export function NavbarAdmin() {
   const history = useHistory();
@@ -8,7 +22,7 @@ export function NavbarAdmin() {
     AuthStore.logout();
     history.push("/");
   };
-  return (
+  return useObserver(() => (
     <nav className="border-b-2">
       <div class="max-w-7xl mx-auto  px-4 ">
         <div class="flex items-center justify-between h-16">
@@ -25,12 +39,18 @@ export function NavbarAdmin() {
                 <Link class="text-black px-3 py-2  text-sm font-medium" to="/">
                   Dashboard
                 </Link>
-                <Link
-                  class="text-black px-3 py-2  text-sm font-medium"
-                  to="/users"
-                >
-                  Users
-                </Link>
+                {adminRoutesMenu.map(
+                  (route) =>
+                    route.isHavePermission && (
+                      <Link
+                        class="text-black px-3 py-2  text-sm font-medium"
+                        to={route.path}
+                        key={route.path}
+                      >
+                        {route.displayName}
+                      </Link>
+                    )
+                )}
               </div>
             </div>
           </div>
@@ -49,5 +69,5 @@ export function NavbarAdmin() {
         </div>
       </div>
     </nav>
-  );
+  ));
 }
