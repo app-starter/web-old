@@ -7,6 +7,7 @@ import {
   AboutPageScreen,
   DashboardScreen,
   UsersScreen,
+  RoleScreen,
 } from "../screens";
 import AuthStore from "../stores/AuthStore";
 import { useObserver } from "mobx-react";
@@ -28,7 +29,7 @@ export function BaseRouter() {
 function AuthRouter() {
   return (
     <Switch>
-      <Route path="/login" >
+      <Route path="/login">
         <LoginScreen />
       </Route>
       <Route path="/register">
@@ -63,11 +64,17 @@ function HomeRouter() {
 
       <Route path="/users">
         {AuthStore.isHavePermission("Permission_UserRead") ? (
-        <UsersScreen />
+          <UsersScreen />
         ) : (
           <div>İzin Yok</div>
         )}
       </Route>
+      <Route path="/roles">
+        {AuthStore.isHavePermission("Permission_UserRead") ? (
+          <RoleScreen />
+        ) : (
+          <div>İzin Yok</div>
+        )}
       </Route>
     </Switch>
   );
