@@ -1,13 +1,11 @@
 import { useObserver } from "mobx-react";
 import React, { useEffect } from "react";
 import { UserCard } from "../../../components";
-import AuthStore from "../../../stores/AuthStore";
 import UserStore from "../../../stores/UserStore";
 import { DashboardLayout } from "../shared/layout";
 
 export function UsersScreen() {
   const login = () => {
-    // Api Login entpoint must be called in here
     UserStore.getAllUser();
   };
 

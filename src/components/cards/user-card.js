@@ -1,29 +1,29 @@
 export function UserCard(props) {
   return (
-    <div class="flex flex-col items-center w-full max-w-xs p-4 mx-auto bg-white rounded-3xl md:flex-row shadow-md">
-      <div class="flex flex-col space-y-4">
-        <div class="flex flex-col items-center md:items-start">
-          <h2 class="text-base font-medium">{props.email}</h2>
-          <p class="text-xs font-medium text-gray-400">{props.role}</p>
+    <div className="flex flex-col items-center w-full max-w-xs p-4 mx-auto bg-white rounded-3xl md:flex-row shadow-md">
+      <div className="flex flex-col space-y-4">
+        <div className="flex flex-col items-center md:items-start">
+          <h2 className="text-base font-medium">{props.email}</h2>
+          <p className="text-xs font-medium text-gray-400">{props.role}</p>
         </div>
-        <div class="flex items-center justify-center space-x-3 md:justify-start">
-          <a href="#" class="transition-transform transform hover:scale-125">
+        <div className="flex items-center justify-center space-x-3 md:justify-start">
+          <a href="#" className="transition-transform transform hover:scale-125">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 492.49284 492"
               fill="currentColor"
-              class="w-5 h-5  hover:text-green-300"
+              className="w-5 h-5  hover:text-green-300"
             >
               <path d="m304.140625 82.472656-270.976563 270.996094c-1.363281 1.367188-2.347656 3.09375-2.816406 4.949219l-30.035156 120.554687c-.898438 3.628906.167969 7.488282 2.816406 10.136719 2.003906 2.003906 4.734375 3.113281 7.527344 3.113281.855469 0 1.730469-.105468 2.582031-.320312l120.554688-30.039063c1.878906-.46875 3.585937-1.449219 4.949219-2.8125l271-270.976562zm0 0" />
               <path d="m476.875 45.523438-30.164062-30.164063c-20.160157-20.160156-55.296876-20.140625-75.433594 0l-36.949219 36.949219 105.597656 105.597656 36.949219-36.949219c10.070312-10.066406 15.617188-23.464843 15.617188-37.714843s-5.546876-27.648438-15.617188-37.71875zm0 0" />
             </svg>
           </a>
-          <a href="#" class="transition-transform transform hover:scale-125">
+          <a href="#" className="transition-transform transform hover:scale-125">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 384 384"
               fill="currentColor"
-              class="w-5 h-5  hover:text-red-600"
+              className="w-5 h-5  hover:text-red-600"
             >
               <g>
                 <g>
