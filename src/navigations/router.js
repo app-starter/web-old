@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useParams } from "react-router-dom";
 import {
   LoginScreen,
   RegisterScreen,
@@ -12,8 +12,17 @@ import {
 import AuthStore from "../stores/AuthStore";
 import { useObserver } from "mobx-react";
 export function BaseRouter() {
+  let { abc } = useParams();
   return useObserver(() => (
     <Switch>
+      <Route
+        path="/googleLogin"
+        render={() => {
+          var token = decodeURI(window.location.href).split("=").pop();
+          AuthStore.setUser(token.substring(0, token.length-1));
+          window.open("http://localhost:3000/", "_self");
+        }}
+      ></Route>
       {AuthStore.isLogin || AuthStore.isHaveTokenLogin() ? (
         <Route path="/">
           <HomeRouter />
