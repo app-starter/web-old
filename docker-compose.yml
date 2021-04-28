@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  magma_frontend_dev:
-    container_name: magma_frontend_dev
+  frontend_dev:
+    container_name: frontend_dev
     build:
       context: .
       dockerfile: Dockerfile
