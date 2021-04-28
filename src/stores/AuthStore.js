@@ -11,7 +11,12 @@ class AuthStore {
   }
 
   isHavePermission(permissionName) {
-    var permissionsAll = JSON.parse(localStorage.getItem("permissions"));
+    var permission = localStorage.getItem("permissions");
+    if (permission === "") {
+      return false;
+    }
+    var permissionsAll = JSON.parse(permission);
+
     var isHavePermission = permissionsAll.some((x) => x === permissionName);
     return isHavePermission;
   }
