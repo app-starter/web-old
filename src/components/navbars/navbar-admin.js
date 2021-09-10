@@ -24,9 +24,9 @@ export function NavbarAdmin() {
   };
   return useObserver(() => (
     <nav className="border-b-2">
-      <div class="max-w-7xl mx-auto  px-4 ">
-        <div class="flex items-center justify-between h-16">
-          <div class="flex items-center">
+      <div className="max-w-7xl mx-auto  px-4 ">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
             <Link
               className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
               to="/"
@@ -34,16 +34,16 @@ export function NavbarAdmin() {
               APP STARTER
             </Link>
 
-            <div class="block">
-              <div class="ml-10 flex items-baseline space-x-4">
-                <Link class="text-black px-3 py-2  text-sm font-medium" to="/">
+            <div className="block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                <Link className="text-black px-3 py-2  text-sm font-medium" to="/">
                   Dashboard
                 </Link>
                 {adminRoutesMenu.map(
                   (route) =>
                     route.isHavePermission && (
                       <Link
-                        class="text-black px-3 py-2  text-sm font-medium"
+                        className="text-black px-3 py-2  text-sm font-medium"
                         to={route.path}
                         key={route.path}
                       >
@@ -55,10 +55,10 @@ export function NavbarAdmin() {
             </div>
           </div>
 
-          <div class="ml-4 flex items-center md:ml-6">
-            <div class="ml-3 ">
+          <div className="ml-4 flex items-center md:ml-6">
+            <div className="ml-3 ">
               <Link
-                class="text-black px-3 py-2 rounded-md text-sm font-medium"
+                className="text-black px-3 py-2 rounded-md text-sm font-medium"
                 onClick={logout}
                 to="/"
               >
