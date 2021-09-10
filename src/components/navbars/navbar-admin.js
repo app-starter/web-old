@@ -2,21 +2,23 @@ import { Link, useHistory } from "react-router-dom";
 import { useObserver } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
 
-const adminRoutesMenu = [
-  {
-    displayName: "Users",
-    path: "/users",
-    isHavePermission: AuthStore.isHavePermission("Permission_UserRead"),
-  },
-  {
-    displayName: "Roles",
-    path: "/roles",
-    isHavePermission: AuthStore.isHavePermission("Permission_RoleRead"),
-  },
-];
+
 
 export function NavbarAdmin() {
   const history = useHistory();
+
+  const adminRoutesMenu = [
+    {
+      displayName: "Users",
+      path: "/users",
+      isHavePermission: AuthStore.isHavePermission("Permission_UserRead"),
+    },
+    {
+      displayName: "Roles",
+      path: "/roles",
+      isHavePermission: AuthStore.isHavePermission("Permission_RoleRead"),
+    },
+  ];
   const logout = () => {
     // localstorage  must be clear in here
     AuthStore.logout();
