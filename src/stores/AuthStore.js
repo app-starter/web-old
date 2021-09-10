@@ -16,9 +16,12 @@ class AuthStore {
       return false;
     }
     var permissionsAll = JSON.parse(permission);
-
-    var isHavePermission = permissionsAll.some((x) => x === permissionName);
-    return isHavePermission;
+    if(permissionsAll!=null){
+      return permissionsAll.some((x) => x === permissionName);
+    }
+     
+    
+    return false;
   }
 
   setUser(token) {
