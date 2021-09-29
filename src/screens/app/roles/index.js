@@ -6,7 +6,22 @@ import RoleStore from "../../../stores/RoleStore";
 
 import { DashboardLayout } from "../shared/layout";
 
-export function RoleScreen() {
+export function RoleScreen({ navigation }) {
+  const actions = [
+    {
+      name: "Add Role",
+      color: "blue",
+      icon: "add-icon",
+      onClick: () => {
+        goToAddPage();
+      },
+    },
+  ];
+
+  const goToAddPage = () => {
+    window.location.href = "/role-add";
+  };
+
   const getData = () => {
     RoleStore.getRoles();
   };
@@ -16,7 +31,7 @@ export function RoleScreen() {
   }, []);
   return useObserver(() => (
     <div>
-      <DashboardLayout title="Roles">
+      <DashboardLayout title="Roles" actions={actions}>
         <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4 ">
           {RoleStore.roles.length ? (
             RoleStore.roles.map((item) => (

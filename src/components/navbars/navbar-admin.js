@@ -6,6 +6,7 @@ import AuthStore from "../../stores/AuthStore";
 
 export function NavbarAdmin() {
   const history = useHistory();
+  
 
   const adminRoutesMenu = [
     {
@@ -58,6 +59,14 @@ export function NavbarAdmin() {
           </div>
 
           <div className="ml-4 flex items-center md:ml-6">
+          <div className="ml-3 ">
+              <Link
+                className="text-black px-3 py-2 rounded-md text-sm font-medium"
+                to="/settings"
+              >
+                Settings
+              </Link>
+            </div>
             <div className="ml-3 ">
               <Link
                 className="text-black px-3 py-2 rounded-md text-sm font-medium"

@@ -8,9 +8,12 @@ import {
   DashboardScreen,
   UsersScreen,
   RoleScreen,
+  RoleAddScreen,
+  SettingsScreen,
 } from "../screens";
 import AuthStore from "../stores/AuthStore";
 import { useObserver } from "mobx-react";
+
 export function BaseRouter() {
   let { abc } = useParams();
   return useObserver(() => (
@@ -19,7 +22,7 @@ export function BaseRouter() {
         path="/googleLogin"
         render={() => {
           var token = decodeURI(window.location.href).split("=").pop();
-          AuthStore.setUser(token.substring(0, token.length-1));
+          AuthStore.setUser(token.substring(0, token.length - 1));
           window.open("http://localhost:3000/", "_self");
         }}
       ></Route>
@@ -70,6 +73,9 @@ function HomeRouter() {
       <Route exact path="/">
         <DashboardScreen />
       </Route>
+      <Route exact path="/settings">
+        <SettingsScreen />
+      </Route>
 
       <Route path="/users">
         {AuthStore.isHavePermission("Permission_UserRead") ? (
@@ -78,9 +84,17 @@ function HomeRouter() {
           <div>İzin Yok</div>
         )}
       </Route>
+
       <Route path="/roles">
-        {AuthStore.isHavePermission("Permission_UserRead") ? (
+        {AuthStore.isHavePermission("Permission_RoleRead") ? (
           <RoleScreen />
+        ) : (
+          <div>İzin Yok</div>
+        )}{" "}
+      </Route>
+      <Route path="/role-add">
+        {AuthStore.isHavePermission("Permission_RoleWrite") ? (
+          <RoleAddScreen />
         ) : (
           <div>İzin Yok</div>
         )}
